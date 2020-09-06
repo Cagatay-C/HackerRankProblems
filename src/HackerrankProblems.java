@@ -1600,14 +1600,46 @@ public class HackerrankProblems {
 		
 		return res;
     }
+	static String caesarCipher(String s, int k) {
+        String res = "";
+        int upLimit = 91;
+        int downLimit = 65;
+        for(int i=0; i<s.length(); i++){
+            int pos = s.charAt(i);
+            if((pos > 64 && pos < 91) || (pos > 96 && pos < 123)){
+            	pos += k;
+            	if(pos < 96 && pos > 91) {
+            		pos = 65 + (pos - 91);
+            	}else if(pos > 123) {
+            		pos = 97 + (pos - 123);
+            	} 
+            }
+            res += (char)pos;
+        }
+        return res;
+    }
+	
+	static int findMedian(int[] arr) {
+        int median = 0;
+        int length = arr.length;
+        Arrays.sort(arr);
+        median = arr[length / 2];
+        return median;
+    }
+	
+	static int stringConstruction(String s) {
+		List<Character> listSubStr = new ArrayList<Character>();
+		listSubStr.add(s.charAt(0));
+		for(int i=1; i<s.length(); i++) {
+			if(!listSubStr.contains(s.charAt(i))) {
+				listSubStr.add(s.charAt(i));
+			}
+		}
+		return listSubStr.size();
+    }
 	
 	public static void main(String[] args) {
-		List<Integer> list = new ArrayList<Integer>();
-		int[] arrExp = {-5,15,25,71,63};
-		int[] arr = closestNumbers(arrExp);
-		for(int i=0; i<arr.length; i++) {
-			System.out.println(arr[i]);
-		}	
+		
 	}
 }
 
